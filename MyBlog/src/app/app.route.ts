@@ -3,6 +3,7 @@ import { HomeComponent } from './components/default/home/home.component';
 import { DefaultComponent } from './layouts/default/default.component';
 import { AuthComponent } from './layouts/auth/auth.component';
 import { LoginComponent } from './components/auth/login/login.component';
+import { InstallComponent } from './components/auth/install/install.component';
 
 const routes: Routes = [
     // Dedault Routes
@@ -11,6 +12,7 @@ const routes: Routes = [
     
     // Auth Routes
     { path: 'login', component: AuthComponent, children: [ { path: '', component: LoginComponent } ] },
+    { path: 'install', component: AuthComponent, children: [ { path: '', component: InstallComponent } ] },
 
     // Admin Routes
 ];

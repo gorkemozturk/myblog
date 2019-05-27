@@ -12,6 +12,10 @@ import { FooterComponent } from './components/default/footer/footer.component';
 import { HomeComponent } from './components/default/home/home.component';
 import { ApplicationRoutes } from './app.route';
 import { LoginComponent } from './components/auth/login/login.component';
+import { InstallComponent } from './components/auth/install/install.component';
+import { AdminHeaderComponent } from './components/admin/admin-header/admin-header.component';
+import { AdminPostListComponent } from './components/admin/admin-post/admin-post-list/admin-post-list.component';
+import { AdminPostFormComponent } from './components/admin/admin-post/admin-post-form/admin-post-form.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,11 @@ import { LoginComponent } from './components/auth/login/login.component';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    InstallComponent,
+    AdminHeaderComponent,
+    AdminPostListComponent,
+    AdminPostFormComponent
   ],
   imports: [
     BrowserModule,

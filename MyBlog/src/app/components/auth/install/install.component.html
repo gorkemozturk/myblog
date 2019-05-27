@@ -1,0 +1,49 @@
+<div style="height: 100vh" class="bg-light d-flex align-items-center">
+  <div class="w-25 mx-auto">
+    <form [formGroup]="form" autocomplete="off">
+      <div class="form-group">
+        <input type="text" class="form-control text-secondary text-center bg-transparent" placeholder="Ad"
+        formControlName="firstName" [ngClass]="{ 'is-invalid': submitted && field.firstName.errors }">
+        <div *ngIf="submitted && field.firstName.errors" class="invalid-feedback">
+          <div *ngIf="field.firstName.errors.required">Ad alanın doldurulması zorunludur.</div>
+          <div *ngIf="field.firstName.errors.maxlength">Ad alanı en fazla 50 karakterden oluşabilir.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control text-secondary text-center bg-transparent" placeholder="Soyad"
+        formControlName="lastName" [ngClass]="{ 'is-invalid': submitted && field.lastName.errors }">
+        <div *ngIf="submitted && field.lastName.errors" class="invalid-feedback">
+          <div *ngIf="field.lastName.errors.required">Soyad alanın doldurulması zorunludur.</div>
+          <div *ngIf="field.lastName.errors.maxlength">Soyad alanı en fazla 25 karakterden oluşabilir.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="email" class="form-control text-secondary text-center bg-transparent" placeholder="E-Mail"
+        formControlName="email" [ngClass]="{ 'is-invalid': submitted && field.email.errors }">
+        <div *ngIf="submitted && field.email.errors" class="invalid-feedback">
+          <div *ngIf="field.email.errors.required">E-Mail alanın doldurulması zorunludur.</div>
+          <div *ngIf="field.email.errors.email">E-Mail alanı mail formatında olmalıdır.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control text-secondary text-center bg-transparent" placeholder="Şifre"
+        formControlName="password" [ngClass]="{ 'is-invalid': submitted && field.password.errors }">
+        <div *ngIf="submitted && field.password.errors" class="invalid-feedback">
+          <div *ngIf="field.password.errors.required">Şifre alanın doldurulması zorunludur.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control text-secondary text-center bg-transparent" placeholder="Şifre (Tekrar)"
+        formControlName="confirmPassword" [ngClass]="{ 'is-invalid': submitted && field.confirmPassword.errors }">
+        <div *ngIf="submitted && field.confirmPassword.errors" class="invalid-feedback">
+          <div *ngIf="field.confirmPassword.errors.required">Şifre (tekrar) alanın doldurulması zorunludur.</div>
+          <div *ngIf="field.confirmPassword.errors.mustMatch">Her iki şifrenin eşleşmesi gerekmektedir.</div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <button type="submit" class="btn btn-secondary btn-block text-uppercase" (click)="onSubmit(form)">Kurulumu Tamamla</button>
+      </div>
+    </form>
+  </div>
+</div>
