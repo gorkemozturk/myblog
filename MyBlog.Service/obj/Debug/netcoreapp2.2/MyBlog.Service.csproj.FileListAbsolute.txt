@@ -1,0 +1,14 @@
+C:\Users\Gorkem\source\repos\MyBlog\MyBlog.Service\bin\Debug\netcoreapp2.2\MyBlog.Service.deps.json
+C:\Users\Gorkem\source\repos\MyBlog\MyBlog.Service\bin\Debug\netcoreapp2.2\MyBlog.Service.runtimeconfig.json
+C:\Users\Gorkem\source\repos\MyBlog\MyBlog.Service\bin\Debug\netcoreapp2.2\MyBlog.Service.runtimeconfig.dev.json
+C:\Users\Gorkem\source\repos\MyBlog\MyBlog.Service\bin\Debug\netcoreapp2.2\MyBlog.Service.dll
+C:\Users\Gorkem\source\repos\MyBlog\MyBlog.Service\obj\Debug\netcoreapp2.2\MyBlog.Service.csprojAssemblyReference.cache
+C:\Users\Gorkem\source\repos\MyBlog\MyBlog.Service\obj\Debug\netcoreapp2.2\MyBlog.Service.csproj.CoreCompileInputs.cache
+C:\Users\Gorkem\source\repos\MyBlog\MyBlog.Service\obj\Debug\netcoreapp2.2\MyBlog.Service.RazorAssemblyInfo.cache
+C:\Users\Gorkem\source\repos\MyBlog\MyBlog.Service\obj\Debug\netcoreapp2.2\MyBlog.Service.RazorAssemblyInfo.cs
+C:\Users\Gorkem\source\repos\MyBlog\MyBlog.Service\obj\Debug\netcoreapp2.2\MyBlog.Service.AssemblyInfoInputs.cache
+C:\Users\Gorkem\source\repos\MyBlog\MyBlog.Service\obj\Debug\netcoreapp2.2\MyBlog.Service.AssemblyInfo.cs
+C:\Users\Gorkem\source\repos\MyBlog\MyBlog.Service\obj\Debug\netcoreapp2.2\MyBlog.Service.RazorTargetAssemblyInfo.cache
+C:\Users\Gorkem\source\repos\MyBlog\MyBlog.Service\bin\Debug\netcoreapp2.2\MyBlog.Service.pdb
+C:\Users\Gorkem\source\repos\MyBlog\MyBlog.Service\obj\Debug\netcoreapp2.2\MyBlog.Service.dll
+C:\Users\Gorkem\source\repos\MyBlog\MyBlog.Service\obj\Debug\netcoreapp2.2\MyBlog.Service.pdb

@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Muli:400,600,900&display=swap&subset=latin-ext');
-@import url('https://fonts.googleapis.com/css?family=Rajdhani:600&display=swap&subset=latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Rajdhani:600,700&display=swap&subset=latin-ext');
 
 body {
     font-family: 'Muli', serif;
@@ -13,8 +13,13 @@ body {
     font-size: 80%;
 }
 
-.form-control {
-    font-weight: 600;
+.form-group label {
+    text-transform: uppercase;
+    font-size: 80%;
+    font-family: 'Rajdhani', sans-serif;
+}
+.form-group .form-control {
+    font-family: 'Rajdhani', sans-serif;
 }
 
 .post h3 {
@@ -23,16 +28,17 @@ body {
 }
 .post small {
     text-transform: uppercase;
-    font-weight: 600;
     font-family: 'Rajdhani', sans-serif;
     color: rgb(185, 185, 185);
+}
+.post small > strong {
+    font-weight: 700;
 }
 .post article {
     font-family: 'Muli', serif;
 }
 
 footer small {
-    font-weight: 600;
     text-transform: uppercase;
     font-family: 'Rajdhani', sans-serif;
 }
