@@ -1,0 +1,28 @@
+<div style="height: 100vh" class="bg-light d-flex align-items-center">
+  <div class="w-25 mx-auto">
+    <form [formGroup]="form" autocomplete="off">
+      <div class="form-group">
+        <input type="email" class="form-control text-secondary text-center bg-transparent" placeholder="E-Mail"
+        formControlName="email" [ngClass]="{ 'is-invalid': submitted && field.email.errors }">
+        <div *ngIf="submitted && field.email.errors" class="invalid-feedback">
+          <div *ngIf="field.email.errors.required">E-mail alanının doldurulması zorunludur.</div>
+          <div *ngIf="field.email.errors.email">E-mail alanı mail formatında olmalıdır.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control text-secondary text-center bg-transparent" placeholder="Şifre"
+        formControlName="password" [ngClass]="{ 'is-invalid': submitted && field.password.errors }">
+        <div *ngIf="submitted && field.password.errors" class="invalid-feedback">
+          <div *ngIf="field.password.errors.required">Şifre alanının doldurulması zorunludur.</div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <button type="submit" class="btn btn-secondary" (click)="onSubmit(form)">Giriş Yap</button>
+        <small>
+          <a href="" class="d-block text-secondary mt-1 ">Şifremi Unuttum</a>
+        </small>
+      </div>
+    </form>
+  </div>
+</div>

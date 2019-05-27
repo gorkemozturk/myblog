@@ -1,1 +1,38 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Muli:400,600,900&display=swap&subset=latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Rajdhani:600&display=swap&subset=latin-ext');
+
+body {
+    font-family: 'Muli', serif;
+    font-weight: 600;
+}
+
+.navbar strong, .nav-item > a, .btn {
+    font-weight: 900;
+    font-family: 'Muli', sans-serif;
+    text-transform: uppercase;
+    font-size: 80%;
+}
+
+.form-control {
+    font-weight: 600;
+}
+
+.post h3 {
+    font-weight: 900;
+    font-family: 'Muli', sans-serif;
+}
+.post small {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: 'Rajdhani', sans-serif;
+    color: rgb(185, 185, 185);
+}
+.post article {
+    font-family: 'Muli', serif;
+}
+
+footer small {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-family: 'Rajdhani', sans-serif;
+}
