@@ -73,14 +73,36 @@ namespace MyBlog.Service.Controllers
 
         // PUT: api/Posts/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutPost(int id, Post post)
+        public async Task<IActionResult> PutPost(int id, PostUpdateViewModel model)
         {
-            if (id != post.Id)
+            if (id != model.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(post).State = EntityState.Modified;
+            var post = await _context.Posts.Include(p => p.Tags).FirstOrDefaultAsync(p => p.Id == id);
+
+            if (post == null)
+            {
+                return NotFound();
+            }
+
+            post.Title = model.Title;
+            post.Slug = model.Slug;
+            post.Summary = model.Summary;
+            post.Body = model.Body;
+            post.IsPublished = model.IsPublished;
+
+            foreach (var tag in post.Tags)
+            {
+                _context.PostTags.Remove(tag);
+            }
+
+            foreach (var t in model.Tags)
+            {
+                var postTag = new PostTag() { PostId = post.Id, TagId = t };
+                _context.PostTags.Add(postTag);
+            }
 
             try
             {

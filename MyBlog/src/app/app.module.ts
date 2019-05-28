@@ -4,6 +4,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { CKEditorModule } from 'ng2-ckeditor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppComponent } from './app.component';
 import { DefaultComponent } from './layouts/default/default.component';
@@ -21,6 +23,9 @@ import { AdminPostFormComponent } from './components/admin/admin-post/admin-post
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
 import { AdminFooterComponent } from './components/admin/admin-footer/admin-footer.component';
 import { PostComponent } from './components/default/post/post.component';
+import { ArchiveComponent } from './components/default/archive/archive.component';
+import { ContactComponent } from './components/default/contact/contact.component';
+import { AdminTagFormComponent } from './components/admin/admin-tag-form/admin-tag-form.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +43,10 @@ import { PostComponent } from './components/default/post/post.component';
     AdminPostFormComponent,
     AdminDashboardComponent,
     AdminFooterComponent,
-    PostComponent
+    PostComponent,
+    ArchiveComponent,
+    ContactComponent,
+    AdminTagFormComponent
   ],
   imports: [
     BrowserModule,
@@ -46,9 +54,14 @@ import { PostComponent } from './components/default/post/post.component';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    CKEditorModule
+    CKEditorModule,
+    MatDialogModule,
+    BrowserAnimationsModule
   ],
   providers: [],
+  entryComponents: [
+    AdminTagFormComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

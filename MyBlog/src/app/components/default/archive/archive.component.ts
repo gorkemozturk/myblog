@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { PostService } from 'src/app/services/post.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-archive',
+  templateUrl: './archive.component.html',
+  styleUrls: ['./archive.component.css']
 })
-export class HomeComponent implements OnInit {
+export class ArchiveComponent implements OnInit {
+  title: string = 'Arşiv';
   posts: any[] = [];
 
   constructor(private postService: PostService) { }
@@ -16,7 +17,7 @@ export class HomeComponent implements OnInit {
   }
 
   getPosts(): void {
-    this.postService.getResources().subscribe(response => this.posts = response.filter(p => p.isPublished === true));
+    this.postService.getResources().subscribe(response => this.posts = response);
   }
 
 }

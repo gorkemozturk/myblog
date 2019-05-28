@@ -9,12 +9,16 @@ import { AdminComponent } from './layouts/admin/admin.component';
 import { AdminPostListComponent } from './components/admin/admin-post/admin-post-list/admin-post-list.component';
 import { AdminPostFormComponent } from './components/admin/admin-post/admin-post-form/admin-post-form.component';
 import { PostComponent } from './components/default/post/post.component';
+import { ArchiveComponent } from './components/default/archive/archive.component';
+import { ContactComponent } from './components/default/contact/contact.component';
 
 const routes: Routes = [
     // Default Routes
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: '', component: DefaultComponent, children: [ { path: 'home', component: HomeComponent } ] },
     { path: '', component: DefaultComponent, children: [ { path: 'post/:id/:slug', component: PostComponent } ] },
+    { path: '', component: DefaultComponent, children: [ { path: 'archive', component: ArchiveComponent } ] },
+    { path: '', component: DefaultComponent, children: [ { path: 'contact', component: ContactComponent } ] },
     
     // Auth Routes
     { path: '', component: AuthComponent, children: [ { path: 'login', component: LoginComponent } ] },

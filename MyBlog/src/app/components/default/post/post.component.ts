@@ -9,16 +9,23 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PostComponent implements OnInit {
   post: any = new Object();
+  posts: any[] = [];
 
   constructor(private postService: PostService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.getPost();
+    this.getRandomPosts();
   }
 
   getPost(): void {
     const id = this.route.snapshot.paramMap.get('id');
     this.postService.getResource(id).subscribe(response => this.post = response);
+  }
+
+  getRandomPosts(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.postService.getResources().subscribe(response => this.posts = response.filter(p => p.id != id).filter((p, index) => index < 5));
   }
 
 }

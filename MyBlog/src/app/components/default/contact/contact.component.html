@@ -1,0 +1,57 @@
+<div class="bg-light p-5">
+  <div class="container">
+    <div class="row d-flex align-items-center">
+      <div class="col">
+        <h3 class="text-secondary text-uppercase m-0">{{ title }}</h3>
+        <nav aria-small="breadcrumb">
+          <ol class="breadcrumb bg-transparent p-0">
+            <li class="breadcrumb-item"><a routerLink="/">Anasayfa</a></li>
+            <li class="breadcrumb-item active" aria-current="page">İletişim</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="p-5">
+  <div class="container">
+    <form [formGroup]="form" class="w-50" autocomplete="off">
+      <div class="form-group">
+        <small class="text-secondary font-weight-bold">Ad / Soyad</small>
+        <input type="text" class="form-control text-secondary rounded-0"
+        formControlName="fullName" [ngClass]="{ 'is-invalid': submitted && field.fullName.errors }">
+        <div *ngIf="submitted && field.fullName.errors" class="invalid-feedback">
+          <div *ngIf="field.fullName.errors.required">Ad / Soyad alanının doldurulması zorunludur.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <small class="text-secondary font-weight-bold">E-Mail</small>
+        <input type="email" class="form-control text-secondary rounded-0"
+        formControlName="email" [ngClass]="{ 'is-invalid': submitted && field.email.errors }">
+        <div *ngIf="submitted && field.email.errors" class="invalid-feedback">
+          <div *ngIf="field.email.errors.required">E-mail alanının doldurulması zorunludur.</div>
+          <div *ngIf="field.email.errors.email">E-mail alanı mail formatında olmalıdır.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <small class="text-secondary font-weight-bold">Konu</small>
+        <input type="text" class="form-control text-secondary rounded-0"
+        formControlName="subject" [ngClass]="{ 'is-invalid': submitted && field.subject.errors }">
+        <div *ngIf="submitted && field.subject.errors" class="invalid-feedback">
+          <div *ngIf="field.subject.errors.required">Konu alanının doldurulması zorunludur.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <small class="text-secondary font-weight-bold">Mesaj</small>
+        <textarea class="form-control text-secondary rounded-0" rows="3" 
+        formControlName="message" [ngClass]="{ 'is-invalid': submitted && field.message.errors }"></textarea>
+        <div *ngIf="submitted && field.message.errors" class="invalid-feedback">
+          <div *ngIf="field.message.errors.required">Mesaj alanının doldurulması zorunludur.</div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-secondary rounded-0" (click)="onSubmit(form)">Gönder</button>
+    </form>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-<section class="post bg-light p-5" *ngFor="let post of posts">
+<section class="post bg-light p-5" [class.bg-light]="(i+1) % 2 !== 0" *ngFor="let post of posts; let i = index">
   <div class="container">
     <small>
       <span class="pr-3"><strong>Yayınlanma Tarihi:</strong> {{ post.publishedAt | date:'dd.MM.yyyy' }}</span>

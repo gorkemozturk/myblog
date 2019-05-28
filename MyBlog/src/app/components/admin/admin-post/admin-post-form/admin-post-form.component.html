@@ -54,13 +54,18 @@
       </div>
       <div class="form-group">
         <small class="font-weight-bold text-secondary d-block font-weight-bold">Etiketler</small>
-        <button class="btn btn-sm rounded-0 mr-1 mb-1" (click)="onSelect(tag)" *ngFor="let tag of tags"
-        [ngClass]="{'btn-primary': isInTags(tag.id) === true, 'btn-outline-secondary': isInTags(tag.id) === false}">
-          <small class="font-weight-bold"><i *ngIf="isInTags(tag.id)" class="fas fa-check"></i> {{ tag.tagName }}</small>
-        </button>
+        <div class="btn-group btn-group-sm mr-1" role="group" *ngFor="let tag of tags">
+          <button (click)="onSelect(tag)" [ngClass]="{'btn-primary': isInTags(tag.id) === true, 'btn-outline-secondary': isInTags(tag.id) === false}" type="button" 
+          class="btn rounded-0">
+            <small class="font-weight-bold"><i *ngIf="isInTags(tag.id)" class="fas fa-check"></i> {{ tag.tagName }}</small>
+          </button>
+          <button type="button" class="btn btn-outline-secondary rounded-0" (click)="openTagForm(tag)">
+            <i class="fas fa-cog"></i> 
+          </button>
+        </div>
 
-        <button class="btn btn-sm btn-outline-secondary rounded-0 mb-1">
-          <small class="font-weight-bold"><i class="fas fa-plus"></i></small>
+        <button class="btn btn-sm btn-outline-secondary rounded-0" (click)="openTagForm()">
+          <i class="fas fa-plus"></i>
         </button>
       </div>
       <div class="form-group form-check">
@@ -74,5 +79,3 @@
     </form>
   </div>
 </div>
-
-{{ form.value | json }}

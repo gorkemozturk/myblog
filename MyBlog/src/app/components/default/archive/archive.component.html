@@ -1,0 +1,42 @@
+<div class="bg-light p-5">
+  <div class="container">
+    <div class="row d-flex align-items-center">
+      <div class="col">
+        <h3 class="text-secondary text-uppercase m-0">{{ title }}</h3>
+        <nav aria-small="breadcrumb">
+          <ol class="breadcrumb bg-transparent p-0">
+            <li class="breadcrumb-item"><a routerLink="/">Anasayfa</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Arşiv</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="p-5">
+  <div class="container">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item text-secondary border-0 p-3">
+        <div class="row d-flex align-items-center">
+          <div class="col-md-3">
+            <strong>Yayınlanma Tarihi</strong>
+          </div>
+          <div class="col-md-9">
+            <strong>Makale Başlığı</strong>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item text-secondary rounded-0 border-0 p-3" [class.bg-light]="(i+1) % 2 !== 0" *ngFor="let post of posts; let i = index">
+        <div class="row d-flex align-items-center">
+          <div class="col-md-3">
+            {{ post.publishedAt | date:'dd.MM.yyyy - HH:mm:ss' }}
+          </div>
+          <div class="col-md-9">
+            <a class="text-secondary" [routerLink]="['/post/' + post.id + '/' + post.slug]">{{ post.title }}</a>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

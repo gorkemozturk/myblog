@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PostService } from 'src/app/services/post.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { TagService } from 'src/app/services/tag.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AdminTagFormComponent } from '../../admin-tag-form/admin-tag-form.component';
 
 @Component({
   selector: 'app-admin-post-form',
@@ -27,7 +29,8 @@ export class AdminPostFormComponent implements OnInit {
     private route: ActivatedRoute, 
     private postService: PostService, 
     private authService: AuthService,
-    private tagService: TagService) { }
+    private tagService: TagService,
+    private dialog: MatDialog) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -121,6 +124,19 @@ export class AdminPostFormComponent implements OnInit {
     this.form.patchValue({
       slug: slug
     });
+  }
+
+  openTagForm(tag?: any): void {
+    const dialogRef = this.dialog.open(AdminTagFormComponent, {
+      panelClass: 'customized-dialog',
+      disableClose: false,
+      autoFocus: false,
+      data: { tag }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.getTags();
+    }); 
   }
 
 }
