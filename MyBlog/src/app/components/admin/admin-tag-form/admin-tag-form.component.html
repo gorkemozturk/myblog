@@ -1,3 +1,18 @@
-{{ data.tag.tagName }}
-
-<button (click)="onSubmit()">Submit</button>
+<div class="p-3">
+  <div class="container px-0">
+    <form [formGroup]="form" class="row no-gutters" autocomplete="off">
+      <div class="col-8">
+        <input type="text" class="form-control text-secondary rounded-0" formControlName="tagName" [ngClass]="{ 'is-invalid': submitted && field.tagName.errors }">
+        <div *ngIf="submitted && field.tagName.errors" class="invalid-feedback">
+          <div *ngIf="field.tagName.errors.required">Etiket alanının doldurulması zorunludur.</div>
+          <div *ngIf="field.tagName.errors.maxlength">Etiket alanı en fazla 25 karakterden oluşabilir.</div>
+        </div>
+      </div>
+      <div class="col-4 pl-1">
+        <button [disabled]="!form.valid" class="btn btn-secondary btn-block rounded-0" (click)="onSubmit(form)" matDialogClose>
+          {{ data.tag ? 'Güncelle' : 'Kaydet' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

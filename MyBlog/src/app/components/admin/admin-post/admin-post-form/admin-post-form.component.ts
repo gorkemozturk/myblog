@@ -139,4 +139,11 @@ export class AdminPostFormComponent implements OnInit {
     }); 
   }
 
+  onDeleteTag(tag: any): void {
+    this.tagService.deleteResource(tag.id).subscribe(response => {
+      const index = this.tags.indexOf(tag);
+      this.tags.splice(index, 1);
+    });
+  }
+
 }
