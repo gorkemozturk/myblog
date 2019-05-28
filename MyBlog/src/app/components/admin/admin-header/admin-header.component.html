@@ -1,3 +1,34 @@
-<p>
-  admin-header works!
-</p>
+<div class="bg-secondary p-3">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg p-0">
+      <button class="navbar-toggler bg-light text-secondary rounded-0 p-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-th-list"></i>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link text-light pl-0" routerLink="/">
+              <i class="fas fa-caret-square-left"></i>
+            </a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link text-light" routerLink="/admin">Kontrol Paneli</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" routerLink="/admin/posts">Makaleler</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" routerLink="/admin/pages">Sayfalar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light pr-0" routerLink="/admin/contacts">İletişim</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>

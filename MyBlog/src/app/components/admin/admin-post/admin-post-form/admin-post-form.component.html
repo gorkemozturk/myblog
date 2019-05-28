@@ -1,3 +1,78 @@
-<p>
-  admin-post-form works!
-</p>
+<div class="bg-light p-5">
+  <div class="container">
+    <div class="row d-flex align-items-center">
+      <div class="col">
+        <h3 class="text-secondary text-uppercase m-0">{{ title }}</h3>
+        <nav aria-small="breadcrumb">
+          <ol class="breadcrumb bg-transparent p-0">
+            <li class="breadcrumb-item"><a routerLink="/admin">Anasayfa</a></li>
+            <li class="breadcrumb-item"><a routerLink="/admin/posts">Makaleler</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Yeni Makale Oluştur</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="p-5">
+  <div class="container">
+    <form [formGroup]="form" autocomplete="off">
+      <div class="form-group">
+        <small class="font-weight-bold text-secondary">Başlık</small>
+        <input type="text" class="form-control text-secondary rounded-0" formControlName="title" [ngClass]="{ 'is-invalid': submitted && field.title.errors }">
+        <div *ngIf="submitted && field.title.errors" class="invalid-feedback">
+          <div *ngIf="field.title.errors.required">Başlık alanının doldurulması zorunludur.</div>
+          <div *ngIf="field.title.errors.maxlength">Başlık alanı en fazla 150 karakterden oluşabilir.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <small class="font-weight-bold text-secondary">Bağlantı</small>
+        <input type="text" class="form-control text-secondary rounded-0" formControlName="slug" [ngClass]="{ 'is-invalid': submitted && field.slug.errors }">
+        <small>
+          <a href="javascript:;" (click)="slugGenerate()">Bağlantı Oluştur</a>
+        </small>
+        <div *ngIf="submitted && field.slug.errors" class="invalid-feedback">
+          <div *ngIf="field.slug.errors.required">Bağlantı alanının doldurulması zorunludur.</div>
+          <div *ngIf="field.slug.errors.maxlength">Bağlantı alanı en fazla 150 karakterden oluşabilir.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <small class="font-weight-bold text-secondary">Makale Özeti</small>
+        <textarea class="form-control text-secondary rounded-0" rows="3" formControlName="summary" [ngClass]="{ 'is-invalid': submitted && field.summary.errors }"></textarea>
+        <div *ngIf="submitted && field.summary.errors" class="invalid-feedback">
+          <div *ngIf="field.summary.errors.required">Makale özeti alanının doldurulması zorunludur.</div>
+          <div *ngIf="field.summary.errors.maxlength">Makale özeti alanı en fazla 250 karakterden oluşabilir.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <small class="font-weight-bold text-secondary">Makale</small>
+        <ckeditor formControlName="body"></ckeditor>
+        <div *ngIf="submitted && field.body.errors" class="invalid-feedback">
+          <div *ngIf="field.body.errors.required">Makale alanının doldurulması zorunludur.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <small class="font-weight-bold text-secondary d-block font-weight-bold">Etiketler</small>
+        <button class="btn btn-sm rounded-0 mr-1 mb-1" (click)="onSelect(tag)" *ngFor="let tag of tags"
+        [ngClass]="{'btn-primary': isInTags(tag.id) === true, 'btn-outline-secondary': isInTags(tag.id) === false}">
+          <small class="font-weight-bold"><i *ngIf="isInTags(tag.id)" class="fas fa-check"></i> {{ tag.tagName }}</small>
+        </button>
+
+        <button class="btn btn-sm btn-outline-secondary rounded-0 mb-1">
+          <small class="font-weight-bold"><i class="fas fa-plus"></i></small>
+        </button>
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="isPublished" formControlName="isPublished">
+        <label class="form-check-small text-secondary" for="isPublished">Yayınla</label>
+      </div>
+    
+      <div class="text-right">
+        <button (click)="onSubmit(form)" type="submit" class="btn btn-secondary rounded-0">{{ id ? 'Güncelle' : 'Kaydet' }}</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{{ form.value | json }}

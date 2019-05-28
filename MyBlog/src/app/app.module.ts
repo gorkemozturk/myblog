@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
+import { CKEditorModule } from 'ng2-ckeditor';
+
 import { AppComponent } from './app.component';
 import { DefaultComponent } from './layouts/default/default.component';
 import { AuthComponent } from './layouts/auth/auth.component';
@@ -16,6 +18,9 @@ import { InstallComponent } from './components/auth/install/install.component';
 import { AdminHeaderComponent } from './components/admin/admin-header/admin-header.component';
 import { AdminPostListComponent } from './components/admin/admin-post/admin-post-list/admin-post-list.component';
 import { AdminPostFormComponent } from './components/admin/admin-post/admin-post-form/admin-post-form.component';
+import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
+import { AdminFooterComponent } from './components/admin/admin-footer/admin-footer.component';
+import { PostComponent } from './components/default/post/post.component';
 
 @NgModule({
   declarations: [
@@ -30,14 +35,18 @@ import { AdminPostFormComponent } from './components/admin/admin-post/admin-post
     InstallComponent,
     AdminHeaderComponent,
     AdminPostListComponent,
-    AdminPostFormComponent
+    AdminPostFormComponent,
+    AdminDashboardComponent,
+    AdminFooterComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,
     ApplicationRoutes,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    CKEditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
