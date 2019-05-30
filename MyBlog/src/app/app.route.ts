@@ -16,31 +16,39 @@ import { PageComponent } from './components/default/page/page.component';
 import { AdminPageListComponent } from './components/admin/admin-page/admin-page-list/admin-page-list.component';
 import { AdminPageFormComponent } from './components/admin/admin-page/admin-page-form/admin-page-form.component';
 import { TagPostComponent } from './components/default/tag-post/tag-post.component';
+import { AuthGuard } from './guards/auth.guard';
+import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
     // Default Routes
     { path: '', redirectTo: '/home', pathMatch: 'full' },
-    { path: '', component: DefaultComponent, children: [ { path: 'home', component: HomeComponent } ] },
-    { path: '', component: DefaultComponent, children: [ { path: 'tag/:id/posts', component: TagPostComponent } ] },
-    { path: '', component: DefaultComponent, children: [ { path: 'post/:id/:slug', component: PostComponent } ] },
-    { path: '', component: DefaultComponent, children: [ { path: 'page/:id/:slug', component: PageComponent } ] },
-    { path: '', component: DefaultComponent, children: [ { path: 'archive', component: ArchiveComponent } ] },
-    { path: '', component: DefaultComponent, children: [ { path: 'contact', component: ContactComponent } ] },
+    { path: '', component: DefaultComponent, children: [ 
+        { path: 'home', component: HomeComponent },
+        { path: 'tag/:id/posts', component: TagPostComponent },
+        { path: 'post/:id/:slug', component: PostComponent },
+        { path: 'page/:id/:slug', component: PageComponent },
+        { path: 'archive', component: ArchiveComponent },
+        { path: 'contact', component: ContactComponent }
+    ]},
     
     // Auth Routes
-    { path: '', component: AuthComponent, children: [ { path: 'login', component: LoginComponent } ] },
-    { path: '', component: AuthComponent, children: [ { path: 'install', component: InstallComponent } ] },
+    { path: '', component: AuthComponent, children: [ 
+        { path: 'login', component: LoginComponent, canActivate: [ LoginGuard ] },
+        { path: 'install', component: InstallComponent }
+    ]},
 
     // Admin Routes
     { path: 'admin', redirectTo: '/admin/dashboard', pathMatch: 'full' },
-    { path: 'admin', component: AdminComponent, children: [ { path: 'dashboard', component: AdminDashboardComponent } ] },
-    { path: 'admin', component: AdminComponent, children: [ { path: 'posts', component: AdminPostListComponent } ] },
-    { path: 'admin', component: AdminComponent, children: [ { path: 'posts/new', component: AdminPostFormComponent } ] },
-    { path: 'admin', component: AdminComponent, children: [ { path: 'posts/edit/:id', component: AdminPostFormComponent } ] },
-    { path: 'admin', component: AdminComponent, children: [ { path: 'pages', component: AdminPageListComponent } ] },
-    { path: 'admin', component: AdminComponent, children: [ { path: 'pages/new', component: AdminPageFormComponent } ] },
-    { path: 'admin', component: AdminComponent, children: [ { path: 'pages/edit/:id', component: AdminPageFormComponent } ] },
-    { path: 'admin', component: AdminComponent, children: [ { path: 'contacts', component: AdminContactListComponent } ] }
+    { path: 'admin', component: AdminComponent, children: [ 
+        { path: 'dashboard', component: AdminDashboardComponent, canActivate: [ AuthGuard ] },
+        { path: 'posts', component: AdminPostListComponent, canActivate: [ AuthGuard ] },
+        { path: 'posts/new', component: AdminPostFormComponent, canActivate: [ AuthGuard ] },
+        { path: 'posts/edit/:id', component: AdminPostFormComponent, canActivate: [ AuthGuard ] },
+        { path: 'pages', component: AdminPageListComponent, canActivate: [ AuthGuard ] },
+        { path: 'pages/new', component: AdminPageFormComponent, canActivate: [ AuthGuard ] },
+        { path: 'pages/edit/:id', component: AdminPageFormComponent, canActivate: [ AuthGuard ] },
+        { path: 'contacts', component: AdminContactListComponent, canActivate: [ AuthGuard ] }
+    ]}
 ];
 
 export const ApplicationRoutes = RouterModule.forRoot(routes);
