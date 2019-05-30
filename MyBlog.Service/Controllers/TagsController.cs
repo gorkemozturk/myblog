@@ -98,6 +98,13 @@ namespace MyBlog.Service.Controllers
             return tag;
         }
 
+        // DELETE: api/Tags/5/Usage
+        [HttpGet("{id}/Usage")]
+        public bool GetTagUsage(int id)
+        {
+            return _context.PostTags.Any(e => e.TagId == id);
+        }
+
         private bool TagExists(int id)
         {
             return _context.Tags.Any(e => e.Id == id);

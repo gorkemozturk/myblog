@@ -26,6 +26,8 @@ import { PostComponent } from './components/default/post/post.component';
 import { ArchiveComponent } from './components/default/archive/archive.component';
 import { ContactComponent } from './components/default/contact/contact.component';
 import { AdminTagFormComponent } from './components/admin/admin-tag-form/admin-tag-form.component';
+import { AdminContactListComponent } from './components/admin/admin-contact/admin-contact-list/admin-contact-list.component';
+import { AdminContactViewComponent } from './components/admin/admin-contact/admin-contact-view/admin-contact-view.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { AdminTagFormComponent } from './components/admin/admin-tag-form/admin-t
     PostComponent,
     ArchiveComponent,
     ContactComponent,
-    AdminTagFormComponent
+    AdminTagFormComponent,
+    AdminContactListComponent,
+    AdminContactViewComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +64,8 @@ import { AdminTagFormComponent } from './components/admin/admin-tag-form/admin-t
   ],
   providers: [],
   entryComponents: [
-    AdminTagFormComponent
+    AdminTagFormComponent,
+    AdminContactViewComponent
   ],
   bootstrap: [AppComponent]
 })

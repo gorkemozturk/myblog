@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-dashboard.component.css']
 })
 export class AdminDashboardComponent implements OnInit {
-
+  title: string = 'Kontrol Paneli';
+  
   constructor() { }
 
   ngOnInit() {

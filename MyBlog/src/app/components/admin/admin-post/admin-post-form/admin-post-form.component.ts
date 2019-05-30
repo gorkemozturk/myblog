@@ -140,10 +140,18 @@ export class AdminPostFormComponent implements OnInit {
   }
 
   onDeleteTag(tag: any): void {
-    this.tagService.deleteResource(tag.id).subscribe(response => {
-      const index = this.tags.indexOf(tag);
-      this.tags.splice(index, 1);
+    this.tagService.getTagUsage(tag.id).subscribe(response => {
+      if (response === true) {
+        return;
+      }
+      else {
+        this.tagService.deleteResource(tag.id).subscribe(response => {
+          const index = this.tags.indexOf(tag);
+          this.tags.splice(index, 1);
+        });
+      }
     });
+
   }
 
 }

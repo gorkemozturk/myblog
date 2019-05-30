@@ -11,6 +11,7 @@ import { AdminPostFormComponent } from './components/admin/admin-post/admin-post
 import { PostComponent } from './components/default/post/post.component';
 import { ArchiveComponent } from './components/default/archive/archive.component';
 import { ContactComponent } from './components/default/contact/contact.component';
+import { AdminContactListComponent } from './components/admin/admin-contact/admin-contact-list/admin-contact-list.component';
 
 const routes: Routes = [
     // Default Routes
@@ -29,7 +30,8 @@ const routes: Routes = [
     { path: 'admin', component: AdminComponent, children: [ { path: 'dashboard', component: AdminDashboardComponent } ] },
     { path: 'admin', component: AdminComponent, children: [ { path: 'posts', component: AdminPostListComponent } ] },
     { path: 'admin', component: AdminComponent, children: [ { path: 'posts/new', component: AdminPostFormComponent } ] },
-    { path: 'admin', component: AdminComponent, children: [ { path: 'posts/edit/:id', component: AdminPostFormComponent } ] }
+    { path: 'admin', component: AdminComponent, children: [ { path: 'posts/edit/:id', component: AdminPostFormComponent } ] },
+    { path: 'admin', component: AdminComponent, children: [ { path: 'contacts', component: AdminContactListComponent } ] }
 ];
 
 export const ApplicationRoutes = RouterModule.forRoot(routes);
