@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TagService } from 'src/app/services/tag.service';
 
 @Component({
   selector: 'app-footer',
@@ -7,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
   year: string = new Date().toLocaleDateString('tr', { year: 'numeric' });;
+  tags: any[] = [];
 
-  constructor() { }
+  constructor(private tagService: TagService) { }
 
   ngOnInit() {
+    this.getTags();
+  }
+
+  getTags(): void {
+    this.tagService.getResources().subscribe(response => this.tags = response);
   }
 
 }

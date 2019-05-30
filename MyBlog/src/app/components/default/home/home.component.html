@@ -3,11 +3,11 @@
     <small>
       <span class="pr-3"><strong>Yayınlanma Tarihi:</strong> {{ post.publishedAt | date:'dd.MM.yyyy' }}</span>
       <span class="pr-3"><strong>Yazar:</strong> {{ post.owner }}</span>
-      <span><strong>Etiketler: </strong> 
-        <span *ngFor="let tag of post.tags; let i = index">
-          <a [routerLink]="['/tag/' + tag.id + '/posts']">{{ tag.tagName }}</a>
-          <span *ngIf="(i+1) !== post.tags.length">, </span>
-        </span>
+      <strong>Etiketler: </strong> 
+
+      <span *ngFor="let tag of post.tags; let i = index">
+        <a [routerLink]="['/tag/' + tag.id + '/posts']">{{ tag.tagName }}</a>
+        <span *ngIf="post.tags.length !== i+1" class="px-2">|</span>
       </span>
     </small>
     <h3>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -23,6 +24,7 @@ namespace MyBlog.Service.Controllers
 
         // GET: api/Pages
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<Page>>> GetPages()
         {
             return await _context.Pages.ToListAsync();
@@ -44,6 +46,7 @@ namespace MyBlog.Service.Controllers
 
         // PUT: api/Pages/5
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> PutPage(int id, Page page)
         {
             if (id != page.Id)
@@ -74,6 +77,7 @@ namespace MyBlog.Service.Controllers
 
         // POST: api/Pages
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<Page>> PostPage(Page page)
         {
             page.PublishedAt = DateTime.Now;
@@ -86,6 +90,7 @@ namespace MyBlog.Service.Controllers
 
         // DELETE: api/Pages/5
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<ActionResult<Page>> DeletePage(int id)
         {
             var page = await _context.Pages.FindAsync(id);

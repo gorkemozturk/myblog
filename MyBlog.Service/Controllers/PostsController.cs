@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -50,7 +51,7 @@ namespace MyBlog.Service.Controllers
         {
             return await _context.PostTags.Include(p => p.Post).Where(p => p.TagId == id).Select(p => new PostListViewModel
             {
-                Id = p.Id,
+                Id = p.Post.Id,
                 Title = p.Post.Title,
                 Slug = p.Post.Slug,
                 Summary = p.Post.Summary,
@@ -96,6 +97,7 @@ namespace MyBlog.Service.Controllers
 
         // PUT: api/Posts/5
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> PutPost(int id, PostUpdateViewModel model)
         {
             if (id != model.Id)
@@ -148,6 +150,7 @@ namespace MyBlog.Service.Controllers
 
         // POST: api/Posts
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<PostCreateViewModel>> PostPost(PostCreateViewModel model)
         {
             var post = new Post()
@@ -176,6 +179,7 @@ namespace MyBlog.Service.Controllers
 
         // DELETE: api/Posts/5
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<ActionResult<Post>> DeletePost(int id)
         {
             var post = await _context.Posts.FindAsync(id);

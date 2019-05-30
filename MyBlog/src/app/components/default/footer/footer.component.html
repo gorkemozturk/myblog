@@ -1,5 +1,16 @@
 <footer class="bg-secondary text-light text-center p-5">
   <div class="container">
+    <strong class="text-uppercase d-block">Etiketler</strong>
+
+    <div>
+      <span *ngFor="let tag of tags; let i = index">
+        <a class="text-light" [routerLink]="['/tag/' + tag.id + '/posts']">{{ tag.tagName }}</a>
+        <span *ngIf="tags.length !== i+1" class="px-2">|</span>
+      </span>
+    </div>
+
+    <hr>
+
     <small class="d-block text-uppercase">© {{ year }} gorkemozturk.net</small>
   </div>
 </footer>

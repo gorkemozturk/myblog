@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { TagService } from 'src/app/services/tag.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AdminTagFormComponent } from '../../admin-tag-form/admin-tag-form.component';
+import { SlugGenerate } from 'src/app/helpers/slug-generate.helper';
 
 @Component({
   selector: 'app-admin-post-form',
@@ -112,17 +113,11 @@ export class AdminPostFormComponent implements OnInit {
     }
   }
 
-  slugGenerate() {
+  slugGenerate(): void {
     let title: any = this.form.get('title').value;
-    if (!title) { return; }
-
-    let slug = title.toLowerCase().trim();
-
-    slug = slug.replace(/[^a-z0-9\s-]/g, ' ');
-    slug = slug.replace(/[\s-]+/g, '-');
 
     this.form.patchValue({
-      slug: slug
+      slug: SlugGenerate(title)
     });
   }
 

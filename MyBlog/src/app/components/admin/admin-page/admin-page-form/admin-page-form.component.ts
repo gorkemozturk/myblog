@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormControl, FormGroup, NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PageService } from 'src/app/services/page.service';
+import { SlugGenerate } from 'src/app/helpers/slug-generate.helper';
 
 @Component({
   selector: 'app-admin-page-form',
@@ -67,17 +68,11 @@ export class AdminPageFormComponent implements OnInit {
       this.pageService.postResource(form.value).subscribe(response => this.router.navigateByUrl('/admin/pages'));
   }
 
-  slugGenerate() {
+  slugGenerate(): void {
     let title: any = this.form.get('title').value;
-    if (!title) { return; }
-
-    let slug = title.toLowerCase().trim();
-
-    slug = slug.replace(/[^a-z0-9\s-]/g, ' ');
-    slug = slug.replace(/[\s-]+/g, '-');
 
     this.form.patchValue({
-      slug: slug
+      slug: SlugGenerate(title)
     });
   }
 

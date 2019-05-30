@@ -32,6 +32,7 @@ import { AdminPageListComponent } from './components/admin/admin-page/admin-page
 import { AdminPageFormComponent } from './components/admin/admin-page/admin-page-form/admin-page-form.component';
 import { PageComponent } from './components/default/page/page.component';
 import { TagPostComponent } from './components/default/tag-post/tag-post.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,13 @@ import { TagPostComponent } from './components/default/tag-post/tag-post.compone
     MatDialogModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   entryComponents: [
     AdminTagFormComponent,
     AdminContactViewComponent
