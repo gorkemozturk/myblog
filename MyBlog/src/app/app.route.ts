@@ -15,11 +15,13 @@ import { AdminContactListComponent } from './components/admin/admin-contact/admi
 import { PageComponent } from './components/default/page/page.component';
 import { AdminPageListComponent } from './components/admin/admin-page/admin-page-list/admin-page-list.component';
 import { AdminPageFormComponent } from './components/admin/admin-page/admin-page-form/admin-page-form.component';
+import { TagPostComponent } from './components/default/tag-post/tag-post.component';
 
 const routes: Routes = [
     // Default Routes
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: '', component: DefaultComponent, children: [ { path: 'home', component: HomeComponent } ] },
+    { path: '', component: DefaultComponent, children: [ { path: 'tag/:id/posts', component: TagPostComponent } ] },
     { path: '', component: DefaultComponent, children: [ { path: 'post/:id/:slug', component: PostComponent } ] },
     { path: '', component: DefaultComponent, children: [ { path: 'page/:id/:slug', component: PageComponent } ] },
     { path: '', component: DefaultComponent, children: [ { path: 'archive', component: ArchiveComponent } ] },

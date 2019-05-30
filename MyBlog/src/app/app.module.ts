@@ -31,6 +31,7 @@ import { AdminContactViewComponent } from './components/admin/admin-contact/admi
 import { AdminPageListComponent } from './components/admin/admin-page/admin-page-list/admin-page-list.component';
 import { AdminPageFormComponent } from './components/admin/admin-page/admin-page-form/admin-page-form.component';
 import { PageComponent } from './components/default/page/page.component';
+import { TagPostComponent } from './components/default/tag-post/tag-post.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { PageComponent } from './components/default/page/page.component';
     AdminContactViewComponent,
     AdminPageListComponent,
     AdminPageFormComponent,
-    PageComponent
+    PageComponent,
+    TagPostComponent
   ],
   imports: [
     BrowserModule,

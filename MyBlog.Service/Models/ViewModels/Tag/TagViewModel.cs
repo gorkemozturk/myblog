@@ -7,6 +7,7 @@ namespace MyBlog.Service.Models.ViewModels.Tag
 {
     public class TagViewModel
     {
+        public int Id { get; set; }
         public string TagName { get; set; }
     }
 }

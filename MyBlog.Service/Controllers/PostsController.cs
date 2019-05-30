@@ -38,6 +38,28 @@ namespace MyBlog.Service.Controllers
                 Owner = p.Owner.FullName(),
                 Tags = p.Tags.Select(t => new TagViewModel
                 {
+                    Id = t.Tag.Id,
+                    TagName = t.Tag.TagName
+                })
+            }).ToListAsync();
+        }
+
+        // GET: api/Posts/Tag/5
+        [HttpGet("tag/{id}")]
+        public async Task<ActionResult<IEnumerable<PostListViewModel>>> GetPostsByTag(int id)
+        {
+            return await _context.PostTags.Include(p => p.Post).Where(p => p.TagId == id).Select(p => new PostListViewModel
+            {
+                Id = p.Id,
+                Title = p.Post.Title,
+                Slug = p.Post.Slug,
+                Summary = p.Post.Summary,
+                PublishedAt = p.Post.PublishedAt,
+                IsPublished = p.Post.IsPublished,
+                Owner = p.Post.Owner.FullName(),
+                Tags = p.Post.Tags.Select(t => new TagViewModel
+                {
+                    Id = t.Tag.Id,
                     TagName = t.Tag.TagName
                 })
             }).ToListAsync();
@@ -59,6 +81,7 @@ namespace MyBlog.Service.Controllers
                 IsPublished = p.IsPublished,
                 Tags = p.Tags.Select(t => new TagViewModel
                 {
+                    Id = t.Tag.Id,
                     TagName = t.Tag.TagName
                 })
             }).FirstOrDefaultAsync(p => p.Id == id);
