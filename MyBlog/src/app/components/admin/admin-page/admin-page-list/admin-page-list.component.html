@@ -6,13 +6,13 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent p-0">
             <li class="breadcrumb-item"><a routerLink="/admin">Kontrol Paneli</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Makaleler</li>
+            <li class="breadcrumb-item active" aria-current="page">{{ title }}</li>
           </ol>
         </nav>
       </div>
       
       <div class="col text-right">
-        <a routerLink="/admin/posts/new" class="btn btn-secondary rounded-0">Yeni Makale Oluştur</a>
+        <a routerLink="/admin/pages/new" class="btn btn-secondary rounded-0">Yeni Sayfa Oluştur</a>
       </div>
     </div>
   </div>
@@ -20,34 +20,34 @@
 
 <div class="p-5">
   <div class="container">
-    <div *ngIf="!posts.length" class="alert alert-secondary m-0 rounded-0" role="alert">
-      Listelenecek herhangi bir makale bulunamadı.
+    <div *ngIf="!pages.length" class="alert alert-secondary m-0 rounded-0" role="alert">
+      Listelenecek herhangi bir sayfa bulunamadı.
     </div>
 
-    <ul *ngIf="posts.length" class="list-group list-group-flush">
+    <ul *ngIf="pages.length" class="list-group list-group-flush">
       <li class="list-group-item text-secondary rounded border-0 p-3">
         <div class="row">
           <div class="col-md-3">
             <strong>Yayınlanma Tarihi</strong>
           </div>
           <div class="col-md-7">
-            <strong>Makale Başlığı</strong>
+            <strong>Sayfa Başlığı</strong>
           </div>
         </div>
       </li>
-      <li class="list-group-item text-secondary rounded-0 border-0 p-3" [class.bg-light]="(i+1) % 2 !== 0" *ngFor="let post of posts; let i = index">
+      <li class="list-group-item text-secondary rounded-0 border-0 p-3" [class.bg-light]="(i+1) % 2 !== 0" *ngFor="let page of pages; let i = index">
         <div class="row d-flex align-items-center">
           <div class="col-md-3">
-            {{ post.publishedAt | date:'dd.MM.yyyy - HH:mm:ss' }}
+            {{ page.publishedAt | date:'dd.MM.yyyy - HH:mm:ss' }}
           </div>
           <div class="col-md-7">
-            {{ post.title }}
+            {{ page.title }}
           </div>
           <div class="col-md-2 text-right">
-            <a [routerLink]="['/admin/posts/edit/' + post.id]" class="btn btn-sm btn-outline-secondary rounded-0">
+            <a [routerLink]="['/admin/pages/edit/' + page.id]" class="btn btn-sm btn-outline-secondary rounded-0">
               <i class="fas fa-sync-alt"></i>
             </a>
-            <button (click)="onDelete(post)" class="btn btn-sm btn-outline-secondary rounded-0 ml-1">
+            <button (click)="onDelete(page)" class="btn btn-sm btn-outline-secondary rounded-0 ml-1">
               <i class="far fa-trash-alt"></i>
             </button>
           </div>

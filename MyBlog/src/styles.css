@@ -10,7 +10,7 @@ h1, h2, h3, h4, h5, h6, strong, .nav-item > a, .btn {
     font-weight: 700;
 }
 
-.post small, .post a {
+.page, .post small, .post a {
     color: rgb(185, 185, 185);
 }
 

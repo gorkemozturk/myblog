@@ -1,0 +1,15 @@
+<section class="page bg-light p-5">
+  <div class="container">
+    <small>
+      <span><strong>Yayınlanma Tarihi:</strong> {{ page.publishedAt | date:'dd.MM.yyyy' }}</span>
+    </small>
+
+    <h1 class="text-secondary m-0">{{ page.title }}</h1>
+  </div>
+</section>
+
+<section class="p-5">
+  <div class="container">
+    <article class="text-secondary" [innerHTML]="page.body"></article>
+  </div>
+</section>
