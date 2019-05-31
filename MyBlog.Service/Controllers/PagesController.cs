@@ -24,7 +24,6 @@ namespace MyBlog.Service.Controllers
 
         // GET: api/Pages
         [HttpGet]
-        [Authorize]
         public async Task<ActionResult<IEnumerable<Page>>> GetPages()
         {
             return await _context.Pages.ToListAsync();

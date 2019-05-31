@@ -13,7 +13,6 @@ namespace MyBlog.Service.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class TagsController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
@@ -46,6 +45,7 @@ namespace MyBlog.Service.Controllers
 
         // PUT: api/Tags/5
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> PutTag(int id, Tag tag)
         {
             if (id != tag.Id)
@@ -76,6 +76,7 @@ namespace MyBlog.Service.Controllers
 
         // POST: api/Tags
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<Tag>> PostTag(Tag tag)
         {
             _context.Tags.Add(tag);
@@ -86,6 +87,7 @@ namespace MyBlog.Service.Controllers
 
         // DELETE: api/Tags/5
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<ActionResult<Tag>> DeleteTag(int id)
         {
             var tag = await _context.Tags.FindAsync(id);
@@ -102,6 +104,7 @@ namespace MyBlog.Service.Controllers
 
         // DELETE: api/Tags/5/Usage
         [HttpGet("{id}/Usage")]
+        [Authorize]
         public bool GetTagUsage(int id)
         {
             return _context.PostTags.Any(e => e.TagId == id);

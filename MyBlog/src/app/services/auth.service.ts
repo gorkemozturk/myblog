@@ -4,13 +4,14 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import jwt_decode from 'jwt-decode';
+import { BaseService } from './base.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   
-  constructor(private client: HttpClient, private router: Router) { }
+  constructor(private httpClient: HttpClient, private router: Router) { }
 
   getToken(): string {
     return localStorage.getItem('token');
@@ -48,19 +49,19 @@ export class AuthService {
   }
 
   login(input: any): Observable<any> {
-    return this.client.post<any>(environment.url + '/accounts/login', input);
+    return this.httpClient.post<any>(environment.url + '/accounts/login', input);
   }
 
   passwordResetLink(input: any): Observable<any> {
-    return this.client.post<any>(environment.url + '/accounts/password-link', input);
+    return this.httpClient.post<any>(environment.url + '/accounts/password-link', input);
   }
 
   passwordReset(input: any): Observable<any> {
-    return this.client.post<any>(environment.url + '/accounts/password-reset', input);
+    return this.httpClient.post<any>(environment.url + '/accounts/password-reset', input);
   }
 
   install(input: any): Observable<any> {
-    return this.client.post<any>(environment.url + '/accounts/register', input);
+    return this.httpClient.post<any>(environment.url + '/accounts/register', input);
   }
 
   logout() {

@@ -3,6 +3,7 @@ import { FormGroup, Validators, FormBuilder, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MustMatch } from 'src/app/helpers/must-match.validator';
 import { AuthService } from 'src/app/services/auth.service';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-install',
@@ -14,10 +15,13 @@ export class InstallComponent implements OnInit {
   form: FormGroup;
   submitted: boolean = false;
   
-  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) { }
+  result: boolean = false;
+
+  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService, private userService: UsersService) { }
 
   ngOnInit() {
     this.installationForm();
+    this.getUsers();
   }
 
   installationForm(): void {
@@ -41,6 +45,14 @@ export class InstallComponent implements OnInit {
 
     this.authService.install(form.value).subscribe(response => {
       this.router.navigateByUrl('/login');
+    });
+  }
+
+  getUsers(): void {
+    this.userService.getResources().subscribe(response => {
+      if (response.length > 0) {
+        this.result = true;
+      }
     });
   }
 

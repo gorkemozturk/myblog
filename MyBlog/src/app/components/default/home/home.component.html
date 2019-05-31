@@ -6,12 +6,12 @@
       <strong>Etiketler: </strong> 
 
       <span *ngFor="let tag of post.tags; let i = index">
-        <a href="/tag/{{ tag.id }}/posts">{{ tag.tagName }}</a>
+        <a [routerLink]="['/tag/' + tag.id + '/posts']">{{ tag.tagName }}</a>
         <span *ngIf="post.tags.length !== i+1" class="px-2">|</span>
       </span>
     </small>
     <h3>
-      <a href="/post/{{ post.id }}/{{ post.slug }}" class="text-secondary">{{ post.title }}</a>
+      <a [routerLink]="['/post/' + post.id + '/' + post.slug]" class="text-secondary">{{ post.title }}</a>
     </h3>
     <article class="text-secondary">
       {{ post.summary }}

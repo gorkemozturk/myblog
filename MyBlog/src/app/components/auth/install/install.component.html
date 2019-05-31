@@ -1,5 +1,5 @@
 <div style="height: 100vh" class="bg-light d-flex align-items-center">
-  <div class="w-25 mx-auto">
+  <div *ngIf="!result" class="w-25 mx-auto">
     <form [formGroup]="form" autocomplete="off">
       <div class="form-group">
         <input type="text" class="form-control text-secondary text-center bg-transparent rounded-0" placeholder="Ad"
@@ -48,5 +48,8 @@
         </small>
       </div>
     </form>
+  </div>
+  <div *ngIf="result" class="alert alert-secondary text-center m-0 rounded-0 w-25 mx-auto" role="alert">
+    Uygulama kurulumu daha önceden yapıldığından dolayı tekrar kurulum yapamazsınız.
   </div>
 </div>
