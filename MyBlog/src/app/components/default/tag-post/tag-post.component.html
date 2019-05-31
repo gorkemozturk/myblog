@@ -25,13 +25,13 @@
         <span class="pr-3"><strong>Yazar:</strong> {{ post.owner }}</span>
         <span><strong>Etiketler: </strong> 
           <span *ngFor="let tag of post.tags; let i = index">
-            <a [routerLink]="['/tag/' + tag.id + '/posts']">{{ tag.tagName }}</a>
+            <a href="/tag/{{ tag.id }}/posts">{{ tag.tagName }}</a>
             <span *ngIf="(i+1) !== post.tags.length">, </span>
           </span>
         </span>
       </small>
       <h3>
-        <a [routerLink]="['/post/' + post.id + '/' + post.slug]" class="text-secondary">{{ post.title }}</a>
+        <a href="/post/{{ post.id }}/{{ post.slug }}" class="text-secondary">{{ post.title }}</a>
       </h3>
       <article class="text-secondary">
         {{ post.summary }}
