@@ -19,17 +19,21 @@ import { TagPostComponent } from './components/default/tag-post/tag-post.compone
 import { AuthGuard } from './guards/auth.guard';
 import { LoginGuard } from './guards/login.guard';
 import { InstallationGuard } from './guards/installation.guard';
+import { NotFoundComponent } from './components/default/not-found/not-found.component';
 
 const routes: Routes = [
-    // Default Routes
     { path: '', redirectTo: '/home', pathMatch: 'full' },
+    { path: 'admin', redirectTo: '/admin/dashboard', pathMatch: 'full' },
+
+    // Default Routes
     { path: '', component: DefaultComponent, children: [ 
         { path: 'home', component: HomeComponent },
         { path: 'tag/:id/posts', component: TagPostComponent },
         { path: 'post/:id/:slug', component: PostComponent },
         { path: 'page/:id/:slug', component: PageComponent },
         { path: 'archive', component: ArchiveComponent },
-        { path: 'contact', component: ContactComponent }
+        { path: 'contact', component: ContactComponent },
+        { path: 'not-found', component: NotFoundComponent }
     ]},
     
     // Auth Routes
@@ -39,7 +43,6 @@ const routes: Routes = [
     ]},
 
     // Admin Routes
-    { path: 'admin', redirectTo: '/admin/dashboard', pathMatch: 'full' },
     { path: 'admin', component: AdminComponent, children: [ 
         { path: 'dashboard', component: AdminDashboardComponent, canActivate: [ AuthGuard ] },
         { path: 'posts', component: AdminPostListComponent, canActivate: [ AuthGuard ] },
@@ -49,7 +52,9 @@ const routes: Routes = [
         { path: 'pages/new', component: AdminPageFormComponent, canActivate: [ AuthGuard ] },
         { path: 'pages/edit/:id', component: AdminPageFormComponent, canActivate: [ AuthGuard ] },
         { path: 'contacts', component: AdminContactListComponent, canActivate: [ AuthGuard ] }
-    ]}
+    ]},
+
+    { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];
 
 export const ApplicationRoutes = RouterModule.forRoot(routes);

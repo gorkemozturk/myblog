@@ -33,6 +33,8 @@ import { AdminPageFormComponent } from './components/admin/admin-page/admin-page
 import { PageComponent } from './components/default/page/page.component';
 import { TagPostComponent } from './components/default/tag-post/tag-post.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
+import { NotFoundComponent } from './components/default/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,8 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     AdminPageListComponent,
     AdminPageFormComponent,
     PageComponent,
-    TagPostComponent
+    TagPostComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -75,6 +78,11 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
       multi: true
     }
   ],
