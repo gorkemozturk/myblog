@@ -11,5 +11,8 @@ namespace MyBlog.Service.Models
         public string Version { get; set; }
         public string Copyright { get; set; }
         public string Key { get; set; }
+        public string Description { get; set; }
+        public string GitHub { get; set; }
+        public string LinkedIn { get; set; }
     }
 }
