@@ -25,7 +25,7 @@ export class PostComponent implements OnInit {
 
   getRandomPosts(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.postService.getResources().subscribe(response => this.posts = response.filter(p => p.id != id).filter((p, index) => index < 5));
+    this.postService.getResources().subscribe(response => this.posts = response.filter(p => ((p, index) => index < 5) && p.id != id));
   }
 
 }

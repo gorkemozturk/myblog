@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
   }
 
   getPrimaryPages(): void {
-    this.pageService.getResources().subscribe(response => this.pages = response.filter(p => p.isPrimary === true));
+    this.pageService.getResources().subscribe(response => this.pages = response.filter(p => p.isPrimary === true && p.isPublished === true));
   }
 
 }

@@ -34,7 +34,7 @@ const routes: Routes = [
     // Auth Routes
     { path: '', component: AuthComponent, children: [ 
         { path: 'login', component: LoginComponent, canActivate: [ LoginGuard ] },
-        { path: 'install', component: InstallComponent }
+        { path: 'install', component: InstallComponent, canActivate: [ LoginGuard ] }
     ]},
 
     // Admin Routes
