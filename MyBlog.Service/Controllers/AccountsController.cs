@@ -81,6 +81,13 @@ namespace MyBlog.Service.Controllers
                 return BadRequest(installation);
             }
 
+            int users = await context.ApplicationUsers.CountAsync();
+
+            if (users > 0)
+            {
+                return BadRequest();
+            }
+
             var user = new ApplicationUser { FirstName = installation.FirstName, LastName = installation.LastName, UserName = installation.Email, Email = installation.Email };
             var result = await userManager.CreateAsync(user, installation.Password);
 

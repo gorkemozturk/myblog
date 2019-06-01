@@ -9,6 +9,7 @@ import { PostService } from 'src/app/services/post.service';
 export class AdminPostListComponent implements OnInit {
   title: string = 'Makaleler';
   posts: any[] = [];
+  p: number = 1;
 
   constructor(private postService: PostService) { }
 

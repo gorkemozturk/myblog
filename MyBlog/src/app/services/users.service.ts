@@ -7,8 +7,13 @@ import { BaseService } from './base.service';
   providedIn: 'root'
 })
 export class UsersService extends BaseService {
+  users: any = [];
 
-  constructor(http: HttpClient) {
+  constructor(http: HttpClient, private httpClient: HttpClient) {
     super(environment.url + '/users', http);
+  }
+
+  getUsers() {
+    return this.httpClient.get(environment.url + '/users').subscribe(response => this.users = response);
   }
 }

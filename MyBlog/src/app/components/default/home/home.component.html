@@ -1,4 +1,4 @@
-<section class="post bg-light p-5" [class.bg-light]="(i+1) % 2 !== 0" *ngFor="let post of posts; let i = index">
+<section class="post bg-light p-5" [class.bg-light]="(i+1) % 2 !== 0" *ngFor="let post of posts | paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
   <div class="container">
     <small>
       <span class="pr-3"><strong>Yayınlanma Tarihi:</strong> {{ post.publishedAt | date:'dd.MM.yyyy' }}</span>
@@ -18,3 +18,7 @@
     </article>
   </div>
 </section>
+
+<div class="text-center p-5">
+  <pagination-controls class="pagination" (pageChange)="p = $event" previousLabel="Geri" nextLabel="İleri"></pagination-controls>
+</div>

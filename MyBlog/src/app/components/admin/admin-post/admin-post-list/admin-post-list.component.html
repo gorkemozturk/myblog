@@ -35,7 +35,7 @@
           </div>
         </div>
       </li>
-      <li class="list-group-item text-secondary rounded-0 border-0 p-3" [class.bg-light]="(i+1) % 2 !== 0" *ngFor="let post of posts; let i = index">
+      <li class="list-group-item text-secondary rounded-0 border-0 p-3" [class.bg-light]="(i+1) % 2 !== 0" *ngFor="let post of posts | paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
         <div class="row d-flex align-items-center">
           <div class="col-md-3">
             {{ post.publishedAt | date:'dd.MM.yyyy - HH:mm:ss' }}
@@ -54,5 +54,8 @@
         </div>
       </li>
     </ul>
+    <div class="text-center p-5">
+      <pagination-controls class="pagination" (pageChange)="p = $event" previousLabel="Geri" nextLabel="İleri"></pagination-controls>
+    </div>
   </div>
 </div>

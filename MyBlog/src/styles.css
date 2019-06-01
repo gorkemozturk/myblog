@@ -22,3 +22,18 @@ h1, h2, h3, h4, h5, h6, strong, .nav-item > a, .btn {
     padding: 0;
     border-radius: 0;
 }
+
+.pagination {
+    display: inline;
+}
+.pagination .ngx-pagination {
+    margin: 0;
+}
+.pagination .ngx-pagination .current {
+    background: #6c757d;
+}
+.pagination .ngx-pagination li a {
+    text-decoration: none;
+    color: #6c757d;
+    border-radius: 4px;
+}

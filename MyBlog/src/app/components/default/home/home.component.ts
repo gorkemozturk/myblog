@@ -7,6 +7,7 @@ import { PostService } from 'src/app/services/post.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  p: number = 1;
   posts: any[] = [];
 
   constructor(private postService: PostService) { }

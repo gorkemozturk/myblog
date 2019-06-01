@@ -18,7 +18,6 @@ import { AdminPageFormComponent } from './components/admin/admin-page/admin-page
 import { TagPostComponent } from './components/default/tag-post/tag-post.component';
 import { AuthGuard } from './guards/auth.guard';
 import { LoginGuard } from './guards/login.guard';
-import { InstallationGuard } from './guards/installation.guard';
 import { NotFoundComponent } from './components/default/not-found/not-found.component';
 
 const routes: Routes = [
@@ -39,7 +38,7 @@ const routes: Routes = [
     // Auth Routes
     { path: '', component: AuthComponent, children: [ 
         { path: 'login', component: LoginComponent, canActivate: [ LoginGuard ] },
-        { path: 'install', component: InstallComponent, canActivate: [ InstallationGuard ] }
+        { path: 'install', component: InstallComponent, canActivate: [ LoginGuard ] }
     ]},
 
     // Admin Routes
